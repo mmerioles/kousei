@@ -7,12 +7,14 @@
 
 Kousei is a network configuration history workspace.
 
-The purpose is to have an offline-first application for network config management. Simply deployable on a container or baremetal VM to instantly gain insight on your network.
+It continuously captures device state, detects changes via syslog-triggered snapshots, and shows exactly what changed, when, and by whom—all in an offline-first, self-hosted appliance.
 
 Homepage - view all site changes at a glance
+
 <img width="1129" height="877" alt="image" src="https://github.com/user-attachments/assets/8fa34cc0-1209-42cf-957a-23010d164559" />
 
 Triage - walk through your config history like git
+
 <img width="1170" height="1178" alt="image" src="https://github.com/user-attachments/assets/74be1883-01ff-4359-9750-439253c34868" />
 
 ## Runtime
