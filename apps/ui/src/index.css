@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #1f2937;
+  background: #f6f7fb;
+  scrollbar-color: #c4cad6 transparent;
+  scrollbar-width: thin;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "IBM Plex Sans", sans-serif;
+  background: #f6f7fb;
+  overflow-y: scroll;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c4cad6 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+  background-color: rgba(148, 163, 184, 0.75);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.85);
+}

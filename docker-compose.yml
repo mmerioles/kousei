@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: kousei
+      POSTGRES_USER: kousei
+      POSTGRES_PASSWORD: kousei
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kousei -d kousei"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    command: sh -c "alembic upgrade head && uvicorn apps.api.app.main:app --host 0.0.0.0 --port 8000"
+    environment:
+      KOUSEI_DATABASE_URL: postgresql+psycopg://kousei:kousei@postgres:5432/kousei
+      KOUSEI_SNAPSHOT_ROOT: /data/snapshots
+      KOUSEI_CREDENTIAL_KEY: ${KOUSEI_CREDENTIAL_KEY:-Uo4rfNqnj5zMTKgfFrSguD8Oh2LdZf5X6sadlHwZK3Y=}
+    ports:
+      - "4172:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - snapshots_data:/data/snapshots
+
+volumes:
+  postgres_data:
+  snapshots_data:

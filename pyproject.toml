@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kousei"
+version = "0.1.0"
+description = "Network state history MVP"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic>=1.14.0",
+  "cryptography>=44.0.0",
+  "fastapi>=0.115.0",
+  "psycopg[binary]>=3.2.0",
+  "pydantic>=2.10.0",
+  "pydantic-settings>=2.6.0",
+  "python-json-logger>=2.0.7",
+  "scrapli>=2024.7.30",
+  "sqlalchemy>=2.0.36",
+  "uvicorn[standard]>=0.32.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["apps*", "libs*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
